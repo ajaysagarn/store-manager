@@ -1,0 +1,85 @@
+{
+  "name": "reactstarter",
+  "version": "0.1.0",
+  "private": true,
+  "sideEffects": false,
+  "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.10.4",
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.2.0",
+    "@mui/material": "^5.2.2",
+    "@reach/router": "^1.3.4",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.2",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^4.5.2",
+    "expose-loader": "^0.7.5",
+    "file-loader": "^2.0.0",
+    "handlebars": "^4.0.12",
+    "handlebars-loader": "^1.7.0",
+    "loader-utils": "^1.1.0",
+    "markdown-to-jsx": "^7.1.1",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
+    "raw-loader": "^0.5.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.4",
+    "react-scripts": "4.0.1",
+    "redux": "^4.1.1",
+    "redux-saga": "^1.1.3",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "^0.21.0",
+    "to-string-loader": "^1.1.5",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "url-loader": "^1.0.1",
+    "web-vitals": "^0.2.4",
+    "webpack": "^4.46.0",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^4.3.1",
+    "webpack-manifest-plugin": "^2.0.3",
+    "webpack-merge": "^4.1.4"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.13.3",
+    "css-loader": "^4.3.0",
+    "html-webpack-plugin": "^4.5.2",
+    "less": "^4.1.1",
+    "less-loader": "^4.1.0",
+    "less-vars-to-js": "^1.3.0",
+    "mini-css-extract-plugin": "^1.6.2"
+  },
+  "scripts": {
+    "dev": "webpack --watch",
+    "build": "react-scripts build",
+    "prod": "webpack --config ./webpack.prod.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
