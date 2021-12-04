@@ -6,7 +6,7 @@ import AppShell from '../widgets/appshell/AppShell'
 export default function MyRouter () {
   return (
         <Router>
-          <AppShell/>
+          <AppShell path="/"/>
         </Router>
   )
 }

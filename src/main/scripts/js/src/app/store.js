@@ -12,7 +12,8 @@ const reducer = combineReducers({
 const sagaMiddleware = createSagaMiddleware()
 // mount it on the Store
 export const store = createStore(
-  reducer,
+  ()=>{},
+  // reducer,
   composeEnhancer(applyMiddleware(sagaMiddleware))
 )
 

@@ -5,8 +5,8 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/'
+    path: path.resolve(__dirname, '../dist/js'),
+    publicPath: '/js'
   },
   mode: 'development',
   devtool: 'inline-source-map',
@@ -15,7 +15,10 @@ module.exports = merge(common, {
       '/api': 'http://localhost:8085',
     },
     index: 'home.html',
-    publicPath: '/',
+    devServer: {
+      contentBase: path.resolve(__dirname, "../dist/js"),
+      publicPath: "/", //should provide the path of the served js , img , etc...
+    },
     compress: true,
     port: 9000,
   },

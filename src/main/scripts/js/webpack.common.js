@@ -19,7 +19,7 @@ module.exports = {
       path.resolve("./src"),
       path.resolve("./")
     ],
-    extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.tsx', '.ts','.css']
+    extensions: ['.wasm', '.mjs', '.js', '.json','.cjs', '.jsx', '.tsx', '.ts','.css']
   },
   module: {
     rules: [
