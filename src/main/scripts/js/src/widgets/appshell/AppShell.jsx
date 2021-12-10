@@ -115,7 +115,7 @@ export default function AppShell() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            Enter App Name Here
           </Typography>
         </Toolbar>
       </AppBar>
