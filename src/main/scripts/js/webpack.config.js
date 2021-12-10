@@ -5,19 +5,23 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   output: {
-    path: path.resolve(__dirname, '../dist/js'),
+    path: path.resolve(__dirname, './public/js'),
     publicPath: '/js'
   },
   mode: 'development',
   devtool: 'inline-source-map',
+  
   devServer: {
+    devMiddleware: {
+      writeToDisk: true,
+      publicPath: '/public',
+      index: 'home.html'
+    },
     proxy: {
       '/api': 'http://localhost:8085',
     },
-    index: 'home.html',
-    devServer: {
-      contentBase: path.resolve(__dirname, "../dist/js"),
-      publicPath: "/", //should provide the path of the served js , img , etc...
+    historyApiFallback: {
+      index: 'home.html'
     },
     compress: true,
     port: 9000,

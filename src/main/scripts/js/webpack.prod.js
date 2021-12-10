@@ -7,5 +7,5 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, '../../resources/static/js'),
     publicPath: '/js/'
   },
-  mode: 'development',
+  mode: 'production',
 });
