@@ -6,9 +6,6 @@ import { Provider } from 'react-redux'
 import './styles/Styles.css'
 import reportWebVitals from './reportWebVitals';
 
-console.log(React);
-console.log(useState);
-
 const newDiv = document.createElement("div");
 newDiv.setAttribute('id','root');
 document.body.appendChild(newDiv);
