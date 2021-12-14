@@ -1,4 +1,4 @@
-package com.ajsa.template.starter;
+package com.ajsa.store.manager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.ajsa.template.starter.controller.ui.v1;
+package com.ajsa.store.manager.controller.ui.v1;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
