@@ -25,8 +25,9 @@ public class CustomFilteredBooksImpl implements CustomFilteredBooks{
 
         List<Predicate> predicates = getFilterPredicates(cb,book,book_id,year,title);
 
-        query.select(book)
-                .where(cb.or(predicates.toArray(new Predicate[predicates.size()])));
+        query.select(book);
+
+        query.where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
 
         List<Book> booksPage =  entityManager.createQuery(query)
                 .setMaxResults(page.getPageSize())
@@ -38,7 +39,7 @@ public class CustomFilteredBooksImpl implements CustomFilteredBooks{
         cqCount.select(cb.count(cqCount.from(query.getResultType())));
         cqCount.where(query.getRestriction());
         long count =  entityManager.createQuery(cqCount).getSingleResult();
-
+        //long count = 4;
 
         return new PageImpl<Book>(booksPage,page,count);
     }
@@ -47,7 +48,7 @@ public class CustomFilteredBooksImpl implements CustomFilteredBooks{
         List<Predicate> predicates = new ArrayList<>();
         if(book_id != null)
             predicates.add(cb.equal(book.get("book_id"), book_id));
-        if(year!= null)
+        if(year != null)
             predicates.add(cb.like(book.get("original_publication_year"), (year == null)?"":"%"+year+"%"));
         if(title != null)
             predicates.add(cb.like(book.get("title"), (title == null)?"%%":"%"+title+"%"));
