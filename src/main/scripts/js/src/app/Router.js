@@ -1,12 +1,16 @@
 import { Router } from '@reach/router'
 import React from 'react'
-import AppShell from '../widgets/appshell/AppShell'
+import AddNewBook from '../widgets/AddNewBook'
+import Inventory from '../widgets/Inventory'
+import UploadBooks from '../widgets/UploadBooks'
 
 
 export default function MyRouter () {
   return (
         <Router>
-          <AppShell path="/"/>
+          <Inventory path="/"/>
+          <AddNewBook path="/addBook"/>
+          <UploadBooks path="/upload"/>
         </Router>
   )
 }

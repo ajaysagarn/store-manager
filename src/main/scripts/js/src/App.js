@@ -1,10 +1,10 @@
 import React from 'react';
-import MyRouter from './app/Router';
+import AppShell from './widgets/appshell/AppShell';
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <MyRouter/>
+        <AppShell/>
       </header>
     </div>
   );

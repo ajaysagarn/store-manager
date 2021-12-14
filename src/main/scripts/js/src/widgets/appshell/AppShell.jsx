@@ -17,6 +17,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import MyRouter from '../../app/Router';
 
 const drawerWidth = 240;
 
@@ -115,7 +116,7 @@ export default function AppShell() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Enter App Name Here
+            Book Store Manager
           </Typography>
         </Toolbar>
       </AppBar>
@@ -127,7 +128,7 @@ export default function AppShell() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox'].map((text, index) => (
+          {['View Inventory', 'Add New Book', 'Upload Books'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 <InboxIcon />
@@ -136,26 +137,10 @@ export default function AppShell() {
             </ListItem>
           ))}
         </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography paragraph>
-          
-        </Typography>
-        <Typography paragraph>
-          
-        </Typography>
+        <MyRouter/>
       </Box>
     </Box>
   );
