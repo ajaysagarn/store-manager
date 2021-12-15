@@ -1,4 +1,4 @@
-import { Button, Paper, Typography } from '@mui/material';
+import { Button, Input, Paper, Typography } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import { makeStyles } from '@mui/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -67,12 +67,13 @@ export default function AddNewBook () {
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <Input
             required
             id="year"
             name="original_publication_year"
             label="Release years"
             value={formData?.year}
+            inputProps={{type: 'number', min: 1800, max:2100}}
             fullWidth
             variant="standard"
             onChange={handleFormChange}

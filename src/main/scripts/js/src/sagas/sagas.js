@@ -1,7 +1,7 @@
 import { debounce, fork, put, select, takeEvery } from 'redux-saga/effects'
 import API from "../app/api"
 import { selectFormData, selectTableFilters, selectTablePaging } from '../app/selectors'
-import { clearForm, setFetchedBooks, SET_FILTERS, SET_PAGINATION, SUBMIT_FORM, UPLOAD_BOOKS } from '../reducers/BookActions'
+import { clearForm, setFetchedBooks, SET_FILTERS, SET_PAGINATION, showErrorMessage, showSuccessMessage, SUBMIT_FORM, UPLOAD_BOOKS } from '../reducers/BookActions'
 
 function * fetchAllBooks () {
     try{
@@ -14,6 +14,7 @@ function * fetchAllBooks () {
         }).then((res)=> res?.data || {})
         yield put(setFetchedBooks(books))
     }catch(e){
+        yield put(showErrorMessage("Unable to fetch inventory. Please try again later"))
         console.log(e)
     }
 }
@@ -23,7 +24,9 @@ function* submitForm(){
         const data = yield select(selectFormData)
         yield API.post(["api","v1","book"],data)
         yield put(clearForm())
+        yield put(showSuccessMessage("Book added successfully"))
     }catch(e){
+        yield put(showErrorMessage("Unable to Submit Book. Please try again later"))
         console.log(e)
     }
 }
@@ -35,7 +38,9 @@ function * uploadAllBooks({ payload }){
         yield  API.post(['api', 'v1', 'books'], formData, {}, {}, {
           'Content-Type': 'multipart/form-data'
         })
+        yield put(showSuccessMessage("Books uploaded successfully"))
     }catch(e){
+        yield put(showErrorMessage("Unable to Upload Books. Please try again later"))
         console.log(e)
     }
 }

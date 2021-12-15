@@ -22,7 +22,7 @@ import PropTypes from 'prop-types';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTableContents, selectTableFilters, selectTablePaging, selectTotalRecords } from '../app/selectors';
-import { setFilters, setPagination } from '../reducers/BookActions';
+import { resetTofirstPage, setFilters, setPagination } from '../reducers/BookActions';
 
 
 const headCells = [
@@ -139,11 +139,11 @@ const EnhancedTableToolbar = (props) => {
           Books
         </Typography>
       )}
-    <Paper>
-        <TextField label={`Publication year`} id="margin-none" name='year' onChange={onFiltersChanged} />
-        <TextField label={`Title`} id="margin-none" name='title' onChange={onFiltersChanged} />
-        <TextField label={`Book id`} id="margin-none" name='book_id' onChange={onFiltersChanged} />
-    </Paper>
+    <Box display="flex" width="75%">
+        <TextField style={{padding: '0 5px'}} label={`Publication year`} id="margin-none" name='year' onChange={onFiltersChanged} />
+        <TextField style={{padding: '0 5px'}} label={`Title`} id="margin-none" name='title' onChange={onFiltersChanged} />
+        <TextField style={{padding: '0 5px'}} label={`Book id`} id="margin-none" name='book_id' onChange={onFiltersChanged} />
+    </Box>
     </Toolbar>
   );
 };
@@ -220,13 +220,11 @@ export default function Inventory() {
     let filter = {...filters}
     filter[event.target.name] = event.target.value
     dispatch(setFilters(filter))
+    dispatch(resetTofirstPage())
   }
 
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
-
-  // Avoid a layout jump when reaching the last page with empty rows.
-  // const emptyRows =   paging?.start > 0 ? Math.max(0, (1 + paging?.start) * paging?.size - rows.length) : 0;
 
   return (
     <Box sx={{ width: '100%' }}>
