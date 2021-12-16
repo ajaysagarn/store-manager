@@ -23,10 +23,11 @@ public class CustomFilteredBooksImpl implements CustomFilteredBooks{
         CriteriaQuery<Book> query = cb.createQuery(Book.class);
         Root<Book> book = query.from(Book.class);
 
+        //construct predicates for the filters
         List<Predicate> predicates = getFilterPredicates(cb,book,book_id,year,title);
 
+        //query to select all the books that match all the given filters
         query.select(book);
-
         query.where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
 
         List<Book> booksPage =  entityManager.createQuery(query)
@@ -34,12 +35,11 @@ public class CustomFilteredBooksImpl implements CustomFilteredBooks{
                 .setFirstResult(page.getPageNumber() * page.getPageSize())
                 .getResultList();
 
-
         CriteriaQuery<Long> cqCount = cb.createQuery(Long.class);
         cqCount.select(cb.count(cqCount.from(query.getResultType())));
         cqCount.where(query.getRestriction());
+        // get the count of entries for the query
         long count =  entityManager.createQuery(cqCount).getSingleResult();
-        //long count = 4;
 
         return new PageImpl<Book>(booksPage,page,count);
     }

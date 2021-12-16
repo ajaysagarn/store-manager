@@ -1,22 +1,24 @@
-import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import MenuIcon from '@mui/icons-material/Menu';
+import MuiAppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import MuiDrawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { styled, useTheme } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { Link } from '@reach/router';
+import * as React from 'react';
 import MyRouter from '../../app/Router';
 
 const drawerWidth = 240;
@@ -116,7 +118,7 @@ export default function AppShell() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Book Store Manager
+            <Link to='/' style={{ textDecoration: 'none' }}>Book Store Manager</Link>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -128,14 +130,30 @@ export default function AppShell() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['View Inventory', 'Add New Book', 'Upload Books'].map((text, index) => (
-            <ListItem button key={text}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <ListItem button key={'View Inventory'}>
               <ListItemIcon>
-                <InboxIcon />
+                <ListAltIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={'View Inventory'} />
             </ListItem>
-          ))}
+            </Link>
+            <Link to="/addBook" style={{ textDecoration: 'none' }}>
+            <ListItem button key={'Add New Book'}>
+              <ListItemIcon>
+                <AddBoxIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Add New Book'} />
+            </ListItem>
+            </Link>
+            <Link to="/upload" style={{ textDecoration: 'none' }}>
+            <ListItem button key={'Upload Books'}>
+              <ListItemIcon>
+                <FileUploadIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Upload Books'} />
+            </ListItem>
+            </Link>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
